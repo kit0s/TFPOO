@@ -1,0 +1,22 @@
+Menu:
+1. Cadastrar clientes
+2. Cadastrar entregas
+3. Mostrar quantos clientes foram cadastrados
+4. Mostrar quantas entregas foram cadastradas
+5. Mostrar os dados de um determinado cliente
+6. Mostrar os dados de uma determinada entrega
+7. Mostrar os dados das entregas de um determinado cliente
+8. Mostrar os dados da entrega de maior valor
+9. Mostrar o endereço de uma entrega
+10. Mostrar a soma dos valores das entregas de um determinado cliente
+1;ana@e-mail.com;Ana da Silva;Av. Um, 1
+1;bianca@mail.com;Bianca Souza;R. Dois, 2
+1;pedro@email.com.br;Pedro de Souza;Travessa Tres, 3
+Entregas cadastradas com sucesso.
+2;11;11.11;Salada;ana@e-mail.com
+2;22;22.22;Refrigerante;ana@e-mail.com
+Cliente com email cliente@email.com.br não encontrado.
+2;44;44.44;PS5;bianca@mail.com
+2;55;55.55;PS VR2;bianca@mail.com
+Cliente com email inexistente@mail.com não encontrado.
+Entregas cadastradas com sucesso.
