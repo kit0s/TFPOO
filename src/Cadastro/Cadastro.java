@@ -1,0 +1,50 @@
+package Cadastro;
+
+import Dados.Atendimento.Eventos.Ciclone;
+import Dados.Atendimento.Eventos.Evento;
+import Dados.Atendimento.Eventos.Seca;
+import Dados.Atendimento.Eventos.Terremoto;
+
+import java.util.ArrayList;
+
+public class Cadastro {
+    CadastraEventos cadEvent = new CadastraEventos();
+    public String cadT(String codigo, String data, double longitude, double latitude, double magnitude){
+        Evento evento = new Terremoto(codigo, data, longitude, latitude, magnitude);
+        if (cadEvent.addEvento(evento)){
+            cadEvent.ordenarEventos();
+            return "Terremoto cadastrado com sucesso!";
+        } else {
+            return "Erro: código do evento já cadastrado!";
+        }
+    }
+    public String cadC(String codigo, String data, double longitude, double latitude, double velocidade, double preciptacao){
+        Evento evento = new Ciclone(codigo, data, longitude, latitude, velocidade, preciptacao);
+        if (cadEvent.addEvento(evento)){
+            cadEvent.ordenarEventos();
+            return "Ciclone cadastrado com sucesso!";
+        } else {
+            return "Erro: código do evento já cadastrado!";
+        }
+    }
+    public String cadS(String codigo, String data, double longitude, double latitude, int seca){
+        Evento evento = new Seca(codigo, data, longitude, latitude, seca);
+        if (cadEvent.addEvento(evento)){
+            cadEvent.ordenarEventos();
+            return "Seca cadastrada com sucesso!";
+        } else {
+            return "Erro: código do evento já cadastrado!";
+        }
+    }
+    public String mostrarEventos(){
+        ArrayList<Evento> eventos = cadEvent.todosEventos();
+        if (eventos != null && !eventos.isEmpty()){
+            StringBuilder eventosStr = new StringBuilder();
+            for (Evento evento: eventos) {
+                eventosStr.append(evento.toString()).append("\n");
+            }
+            return eventosStr.toString();
+        }
+        return "Nenhum evento cadastrado";
+    }
+}
