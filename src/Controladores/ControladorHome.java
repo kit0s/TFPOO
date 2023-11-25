@@ -10,7 +10,10 @@ public class ControladorHome {
     private Main main;
     public void setMain(Main main){this.main = main;}
 
-    public void mudarCena(ActionEvent actionEvent) {
+    public void evento(ActionEvent actionEvent) {
         main.mudar(2);
     }
+    public void equipe(ActionEvent actionEvent){main.mudar(3);}
+    public void equipamento(ActionEvent actionEvent){main.mudar(4);}
+
 }

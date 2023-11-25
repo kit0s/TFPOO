@@ -9,9 +9,13 @@ public class Main extends Application {
     //paineis
     private Parent home;
     private Parent evento;
+    private Parent equipe;
+    private Parent equipamento;
     //controladores
     private ControladorHome control1;
     private ControladorEvento control2;
+    private ControladorEquipe control3;
+    private ControladorEquipamento control4;
     @Override
     public void start(Stage stage){
         try{
@@ -19,15 +23,28 @@ public class Main extends Application {
             home = (Parent) loader1.load(getClass().getResource("home.fxml").openStream());
             control1 = (ControladorHome) loader1.getController();
             control1.setMain(this);
+
             FXMLLoader loader2 = new FXMLLoader();
             evento = (Parent) loader2.load(getClass().getResource("Eventos.fxml").openStream());
             control2 = (ControladorEvento) loader2.getController();
             control2.setMain(this);
 
-            cena = new Scene(home, 700, 275);
-            stage.setTitle("Home");
+            FXMLLoader loader3 = new FXMLLoader();
+            equipe = (Parent) loader3.load(getClass().getResource("equipes.fxml").openStream());
+            control3 = (ControladorEquipe) loader3.getController();
+            control3.setMain(this);
+
+            FXMLLoader loader4 = new FXMLLoader();
+            equipamento = (Parent) loader4.load(getClass().getResource("equipamento.fxml").openStream());
+            control4 = (ControladorEquipamento) loader4.getController();
+            control4.setMain(this);
+
+
+
+            cena = new Scene(home);
+            stage.setTitle("ACMERescue");
             stage.setWidth(700);
-            stage.setHeight(500);
+            stage.setHeight(700);
             stage.setScene(cena);
             stage.show();
 
@@ -43,6 +60,12 @@ public class Main extends Application {
                 break;
             case 2:
                 cena.setRoot(evento);
+                break;
+            case 3:
+                cena.setRoot(equipe);
+                break;
+            case 4:
+                cena.setRoot(equipamento);
                 break;
         }
     }

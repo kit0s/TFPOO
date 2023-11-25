@@ -3,11 +3,10 @@ import Cadastro.Cadastro;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 public class ControladorEvento implements Initializable {
 
@@ -18,7 +17,7 @@ public class ControladorEvento implements Initializable {
     @FXML
     private TextField textFieldLat;
     @FXML
-    private TextField textFieldData;
+    private DatePicker datePickerData;
     @FXML
     private ChoiceBox<String> choiceBoxEventos;
     private String[] evento = {"Ciclone","Terremoto", "Seca"};
@@ -88,7 +87,7 @@ public class ControladorEvento implements Initializable {
         try {
             String mensagem = "";
             String codigo = textFieldCodigo.getText();
-            String data = textFieldData.getText();
+            String data = datePickerData.getValue().toString();
             double longitude = Double.parseDouble(textFieldLong.getText());
             double latitude = Double.parseDouble(textFieldLat.getText());
             String selectedEvent = choiceBoxEventos.getValue();
@@ -129,7 +128,7 @@ public class ControladorEvento implements Initializable {
     public void limparDados(){
         textFieldMagnitude.setText(null);
         textFieldVelocidade.setText(null);
-        textFieldData.setText(null);
+        datePickerData.setValue(null);
         textFieldLat.setText(null);
         textFieldLong.setText(null);
         textFieldSeca.setText(null);
