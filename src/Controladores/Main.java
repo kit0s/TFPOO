@@ -23,11 +23,13 @@ public class Main extends Application {
             home = (Parent) loader1.load(getClass().getResource("home.fxml").openStream());
             control1 = (ControladorHome) loader1.getController();
             control1.setMain(this);
+            control1.setStage(stage);
 
             FXMLLoader loader2 = new FXMLLoader();
             evento = (Parent) loader2.load(getClass().getResource("Eventos.fxml").openStream());
             control2 = (ControladorEvento) loader2.getController();
             control2.setMain(this);
+            control2.setStage(stage);
 
             FXMLLoader loader3 = new FXMLLoader();
             equipe = (Parent) loader3.load(getClass().getResource("equipes.fxml").openStream());
@@ -39,12 +41,11 @@ public class Main extends Application {
             control4 = (ControladorEquipamento) loader4.getController();
             control4.setMain(this);
 
-
-
             cena = new Scene(home);
+
             stage.setTitle("ACMERescue");
             stage.setWidth(700);
-            stage.setHeight(700);
+            stage.setHeight(650);
             stage.setScene(cena);
             stage.show();
 
@@ -53,7 +54,7 @@ public class Main extends Application {
             System.out.println("Erro: "+ e);
         }
     }
-    public void mudar(int stage) {
+    public boolean mudar(int stage) {
         switch (stage) {
             case 1:
                 cena.setRoot(home);
@@ -68,8 +69,9 @@ public class Main extends Application {
                 cena.setRoot(equipamento);
                 break;
         }
-    }
 
+        return false;
+    }
     public static void main(String[] args) {
         launch();
     }

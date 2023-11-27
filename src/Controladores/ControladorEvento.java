@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Date;
@@ -46,6 +47,8 @@ public class ControladorEvento implements Initializable {
     @FXML
     private TextArea textAreaDados;
     private Main main;
+    private Stage stage;
+
     public void setMain(Controladores.Main main){this.main = main;}
 
 
@@ -149,5 +152,9 @@ public class ControladorEvento implements Initializable {
     }
     public void voltarHome(ActionEvent actionEvent){
         main.mudar(1);
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }
