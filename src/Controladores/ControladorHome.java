@@ -21,5 +21,7 @@ public class ControladorHome {
     }
     public void equipe(ActionEvent actionEvent){main.mudar(3);}
     public void equipamento(ActionEvent actionEvent){main.mudar(4);}
+    public void atendimento(ActionEvent actionEvent){main.mudar(5);}
+
 
 }
