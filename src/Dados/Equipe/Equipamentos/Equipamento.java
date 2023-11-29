@@ -22,4 +22,13 @@ public abstract class Equipamento {
 	public double getCustoDia() {
 		return custoDia;
 	}
+	@Override
+	public String toString() {
+		return String.format("""
+                Id: %d
+                Nome: %s
+                Custo ao dia: %.2f
+                """, id, nome, custoDia);
+
+	}
 }

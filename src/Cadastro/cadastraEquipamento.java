@@ -34,4 +34,8 @@ public Equipamento consultaPorCodigo(int id){
     }
     return null;
 }
+
+    public ArrayList<Equipamento> getEquipamentos() {
+        return equipamentos;
+    }
 }

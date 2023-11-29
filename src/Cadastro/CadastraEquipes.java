@@ -28,7 +28,7 @@ public class CadastraEquipes {
         return null;
     }
 
-    public ArrayList getEquipes(){
+    public ArrayList<Equipe> getEquipes(){
         return equipes;
     }
 }

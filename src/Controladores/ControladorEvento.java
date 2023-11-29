@@ -1,5 +1,8 @@
 package Controladores;
-import Cadastro.Cadastro;
+import Cadastro.*;
+import Dados.Atendimento.Status;
+import Dados.Equipe.Equipamentos.Equipamento;
+import Dados.Equipe.Equipe;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 public class ControladorEvento implements Initializable {
 
@@ -51,9 +54,72 @@ public class ControladorEvento implements Initializable {
     @FXML
     private VBox telaEvento;
     @FXML
+    private AnchorPane telaEquipe;
+    @FXML
     private AnchorPane telaEquipamento;
+    @FXML
+    private AnchorPane telaAtendimento;
+    @FXML
+    private TextArea textAreaMostraEventos;
     private Main main;
     private Stage stage;
+    @FXML
+    private TextField textFieldId;
+    @FXML
+    private TextField textFieldNome;
+    @FXML
+    private TextField textFieldcustoDia;
+    @FXML
+    private TextField textFieldCapInt;
+    @FXML
+    private TextField textFieldCapDouble;
+    @FXML
+    private TextField textFieldCarga;
+    @FXML
+    private Label labelCapInt;
+    @FXML
+    private Label labelCombustivel;
+    @FXML
+    private Label labelCarga;
+    @FXML
+    private ChoiceBox<String> choiceBoxEquipamento;
+    @FXML
+    private ChoiceBox<String> choiceBoxComb;
+    @FXML
+    private Label labelConfirma2;
+    @FXML
+    private TextField textFieldCodEvento;
+    @FXML
+    private DatePicker dataInicio;
+    @FXML
+    private TextField duracao;
+    @FXML
+    private TextField codigoAtendimento;
+    @FXML
+    private Label confirmaAtendimento;
+    @FXML
+    private Button buttonVerAtendimentos;
+    @FXML
+    private TextArea textAreaAtendimentos;
+    @FXML
+    private Button buttonLimpaAtendimento;
+    @FXML
+    private Button buttonConfirmaEquipe;
+    @FXML
+    private TextField codinome;
+    @FXML
+    private TextField quantidade;
+    @FXML
+    private TextField latitudeEquipe;
+    @FXML
+    private TextField longitudeEquipe;
+    @FXML
+    private Label confirmaCadastroEquipe;
+    @FXML
+    private TextArea textAreaTodosDados;
+    @FXML
+    private AnchorPane telaRelatorioGeral;
+    @FXML
 
     public void setMain(Controladores.Main main){this.main = main;}
 
@@ -152,30 +218,7 @@ public class ControladorEvento implements Initializable {
         textAreaDados.setText(eventosStr);
         labelCadEvento.setVisible(true);
     }
-    @FXML
-    private TextField textFieldId;
-    @FXML
-    private TextField textFieldNome;
-    @FXML
-    private TextField textFieldcustoDia;
-    @FXML
-    private TextField textFieldCapInt;
-    @FXML
-    private TextField textFieldCapDouble;
-    @FXML
-    private TextField textFieldCarga;
-    @FXML
-    private Label labelCapInt;
-    @FXML
-    private Label labelCombustivel;
-    @FXML
-    private Label labelCarga;
-    @FXML
-    private ChoiceBox<String> choiceBoxEquipamento;
-    @FXML
-    private ChoiceBox<String> choiceBoxComb;
-    @FXML
-    private Label labelConfirma2;
+
     Cadastro cadEquip = new Cadastro();
     private String[] equipamento = {"Caminhão Tanque","Barco", "Escavadeira"};
     private String[] combustivel = {"Diesel","Gasolina", "Álcool"};
@@ -270,19 +313,112 @@ public class ControladorEvento implements Initializable {
         labelConfirma2.setVisible(true);
         labelConfirma2.setText(mensagem);
     }
-    public void voltarHome(ActionEvent actionEvent){
-        main.mudar(1);
-    }
     public void mostrarEvento(){
         telaEvento.setVisible(true);
         telaEquipamento.setVisible(false);
+        telaAtendimento.setVisible(false);
+        telaEquipe.setVisible(false);
+        telaRelatorioGeral.setVisible(false);
+
     }
     public void mostrarEquipamento(){
         telaEquipamento.setVisible(true);
         telaEvento.setVisible(false);
+        telaAtendimento.setVisible(false);
+        telaEquipe.setVisible(false);
+        telaRelatorioGeral.setVisible(false);
+
+    }
+    public void mostrarAtendimento(){
+        telaAtendimento.setVisible(true);
+        telaEvento.setVisible(false);
+        telaEquipamento.setVisible(false);
+        telaEquipe.setVisible(false);
+        mostrarDadosEventos();
+        telaRelatorioGeral.setVisible(false);
+
+    }
+    public void mostrarDadosEventos() {
+        String eventosStr = cadEvent.mostrarEventos();
+        textAreaMostraEventos.setVisible(true);
+        textAreaMostraEventos.setText(eventosStr);
+    }
+    public void mostrarEquipe(){
+        telaEquipe.setVisible(true);
+        telaEvento.setVisible(false);
+        telaEquipamento.setVisible(false);
+        telaAtendimento.setVisible(false);
+        telaRelatorioGeral.setVisible(false);
     }
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+    public void cadastraAtendimento(){
+        try {
+            String msg = "";
+            String codigoEvento = textFieldCodEvento.getText();
+            int codigoAtend = Integer.parseInt(codigoAtendimento.getText());
+            String dataInit = dataInicio.getValue().toString();
+            int duracaoDias = Integer.parseInt(duracao.getText());
+            Status status = Status.PENDENTE;
+            msg = cadEvent.cadastroAtendimento(codigoEvento, codigoAtend, dataInit,duracaoDias,status);
+            confirmaAtendimento.setText(msg);
+
+        } catch (NumberFormatException e) {
+            confirmaAtendimento.setVisible(true);
+            confirmaAtendimento.setText("Erro de formato numérico: Por favor, insira valores numéricos válidos.");
+        } catch (NullPointerException e) {
+            confirmaAtendimento.setVisible(true);
+            e.printStackTrace();
+            confirmaAtendimento.setText("Erro de referência nula: Certifique-se de preencher todos os campos obrigatórios.");
+        } catch (IllegalArgumentException e) {
+            confirmaAtendimento.setVisible(true);
+            confirmaAtendimento.setText("Erro de argumento inválido: O evento selecionado não é válido."); // tem nem como, mas coloquei
+        } catch (Exception e) {
+            confirmaAtendimento.setVisible(true);
+            confirmaAtendimento.setText("Erro desconhecido: " + e.getMessage());
+        }
+    }
+    public void mostraAtendimentos(){
+        textAreaAtendimentos.setText(cadEvent.mostrarAtendimentos());
+    }
+    public void limparAtendimento(){
+        textFieldCodEvento.setText(null);
+        textAreaAtendimentos.setText(null);
+        duracao.setText(null);
+        codigoAtendimento.setText(null);
+        dataInicio.setValue(null);
+    }
+    public void cadastraEquipe(){
+        try{
+            String msg = "";
+            String codinomeEquipe = codinome.getText();
+            int quantidadeMembros = Integer.parseInt(quantidade.getText());
+            double latitude = Double.parseDouble(latitudeEquipe.getText());
+            double longitude = Double.parseDouble(longitudeEquipe.getText());
+            ArrayList<Equipamento> equipamentos = null;
+            msg = cadEquip.cadastraEquipe(codinomeEquipe, quantidadeMembros, latitude, longitude, equipamentos);
+            confirmaCadastroEquipe.setText(msg);
+        } catch (NumberFormatException e) {
+            confirmaCadastroEquipe.setText("Erro de formato numérico: Por favor, insira valores numéricos válidos.");
+        } catch (NullPointerException e) {
+            confirmaCadastroEquipe.setVisible(true);
+            confirmaCadastroEquipe.setText("Erro de referência nula: Certifique-se de preencher todos os campos obrigatórios.");
+        } catch (IllegalArgumentException e) {
+            confirmaCadastroEquipe.setVisible(true);
+            confirmaCadastroEquipe.setText("Erro de argumento inválido: O evento selecionado não é válido."); // tem nem como, mas coloquei
+        } catch (Exception e) {
+            confirmaCadastroEquipe.setVisible(true);
+            confirmaCadastroEquipe.setText("Erro desconhecido: " + e.getMessage());
+        }
+    }
+    public void mostrarTodosDados(){
+        telaRelatorioGeral.setVisible(true);
+        textAreaTodosDados.setText(cadEvent.mostrarTodosDados());
+        telaEquipamento.setVisible(false);
+        telaAtendimento.setVisible(false);
+        telaEquipe.setVisible(false);
+        telaEvento.setVisible(false);
     }
 }

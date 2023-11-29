@@ -13,18 +13,20 @@ public class Equipe  {
 	private Evento evento;
 	private ArrayList<Equipamento> equipamentos;
 
-	public Equipe(String codinome, int quantidade, double latitude, double longitude, Evento evento) {
+	public Equipe(String codinome, int quantidade, double latitude, double longitude, ArrayList<Equipamento> equipamentos) {
 		this.codinome = codinome;
 		this.quantidade = quantidade;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.evento = evento;
 		this.equipamentos = new ArrayList<>();
 
 	}
 
 	public String getCodinome() {
 		return codinome;
+	}
+	public void addEquipamentos(Equipamento equipamento){
+		equipamentos.add(equipamento);
 	}
 
 	@Override
