@@ -38,10 +38,6 @@ public class Main extends Application {
             control3 = (ControladorEquipe) loader3.getController();
             control3.setMain(this);
 
-            FXMLLoader loader4 = new FXMLLoader();
-            equipamento = (Parent) loader4.load(getClass().getResource("equipamento.fxml").openStream());
-            control4 = (ControladorEquipamento) loader4.getController();
-            control4.setMain(this);
 
             FXMLLoader loader5 = new FXMLLoader();
             atendimento = (Parent) loader5.load(getClass().getResource("atendimento.fxml").openStream());
@@ -72,11 +68,9 @@ public class Main extends Application {
             case 3:
                 cena.setRoot(equipe);
                 break;
-            case 4:
-                cena.setRoot(equipamento);
-                break;
             case 5:
                 cena.setRoot(atendimento);
+                break;
         }
 
         return false;

@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controladores.ControladorAtendimento"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="624.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ControladorAtendimento">
+   <children>
+      <Button fx:id="voltar" layoutX="505.0" layoutY="312.0" mnemonicParsing="false" onAction="#voltarHome" text="Voltar" />
+      <Label layoutX="178.0" layoutY="14.0" text="CADASTRA ATENDIMENTO" textFill="#d92626">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="textAreaEventos" layoutX="28.0" layoutY="42.0" prefHeight="81.0" prefWidth="539.0" />
+      <TextField fx:id="codAtendimento" layoutX="187.0" layoutY="158.0" promptText="codigo de atendimento" />
+      <DatePicker fx:id="dataInicio" layoutX="187.0" layoutY="208.0" promptText="data de Inicio" />
+      <TextField fx:id="duracao" layoutX="187.0" layoutY="250.0" promptText="duração" />
+      <TextField fx:id="codEvento" layoutX="14.0" layoutY="158.0" promptText="código do evento" />
+      <Button fx:id="mostraDados" layoutX="223.0" layoutY="312.0" mnemonicParsing="false" text="mostra dados" />
+   </children>
 </AnchorPane>
