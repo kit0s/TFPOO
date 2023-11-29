@@ -5,7 +5,7 @@ import Dados.Equipe.Equipamentos.Equipamento;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Equipe implements calculoCusto {
+public class Equipe  {
 	private String codinome;
 	private int quantidade;
 	private double latitude;
@@ -36,8 +36,8 @@ public class Equipe implements calculoCusto {
 				", longitude: " + longitude;
 	}
 
-	@Override
-	public double calculaCusto() {
-		return evento.getDuracao() * 250 * quantidade;
-	}
+//	@Override
+//	public double calculaCusto() {
+//		return e.getDuracao() * 250 * quantidade;
+//	}
 }

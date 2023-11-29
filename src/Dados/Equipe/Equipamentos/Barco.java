@@ -5,7 +5,7 @@ import Dados.Equipe.calculoCusto;
 public class Barco extends Equipamento implements calculoCusto {
 	private int capacidade;
 
-	public Barco(int id, String nome, double custoDia) {
+	public Barco(int id, String nome, double custoDia, int capacidade) {
 		super(id, nome, custoDia);
 		this.capacidade = capacidade;
 
