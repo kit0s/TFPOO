@@ -7,47 +7,24 @@ import javafx.stage.Stage;
 public class Main extends Application {
     private Scene cena;
     //paineis
-    private Parent home;
     private Parent evento;
-    private Parent equipe;
-    private Parent equipamento;
-    private Parent atendimento;
     //controladores
-    private ControladorHome control1;
     private ControladorEvento control2;
-    private ControladorEquipe control3;
-    private ControladorEquipamento control4;
-    private ControladorAtendimento control5;
+
     @Override
     public void start(Stage stage){
         try{
-            FXMLLoader loader1 = new FXMLLoader();
-            home = (Parent) loader1.load(getClass().getResource("home.fxml").openStream());
-            control1 = (ControladorHome) loader1.getController();
-            control1.setMain(this);
-            control1.setStage(stage);
-
             FXMLLoader loader2 = new FXMLLoader();
-            evento = (Parent) loader2.load(getClass().getResource("Eventos.fxml").openStream());
+            evento = (Parent) loader2.load(getClass().getResource("TelaPrincipal.fxml").openStream());
             control2 = (ControladorEvento) loader2.getController();
             control2.setMain(this);
             control2.setStage(stage);
 
-            FXMLLoader loader3 = new FXMLLoader();
-            equipe = (Parent) loader3.load(getClass().getResource("equipes.fxml").openStream());
-            control3 = (ControladorEquipe) loader3.getController();
-            control3.setMain(this);
 
-
-            FXMLLoader loader5 = new FXMLLoader();
-            atendimento = (Parent) loader5.load(getClass().getResource("atendimento.fxml").openStream());
-            control5 = (ControladorAtendimento) loader5.getController();
-            control5.setMain(this);
-
-            cena = new Scene(home);
+            cena = new Scene(evento);
 
             stage.setTitle("ACMERescue");
-            stage.setWidth(700);
+            stage.setWidth(860);
             stage.setHeight(650);
             stage.setScene(cena);
             stage.show();
@@ -56,24 +33,6 @@ public class Main extends Application {
         catch (Exception e){
             System.out.println("Erro: "+ e);
         }
-    }
-    public boolean mudar(int stage) {
-        switch (stage) {
-            case 1:
-                cena.setRoot(home);
-                break;
-            case 2:
-                cena.setRoot(evento);
-                break;
-            case 3:
-                cena.setRoot(equipe);
-                break;
-            case 5:
-                cena.setRoot(atendimento);
-                break;
-        }
-
-        return false;
     }
     public static void main(String[] args) {
         launch();
