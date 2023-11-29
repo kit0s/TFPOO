@@ -60,7 +60,7 @@
       <TextField fx:id="textFieldCarga" layoutX="237.0" layoutY="237.0" promptText="1500.50" visible="false" />
       <Button fx:id="buttonLimparDados" layoutX="125.0" layoutY="263.0" mnemonicParsing="false" onAction="#limparDados" text="Limpar" />
       <Button fx:id="buttonConfirmar" layoutX="231.0" layoutY="263.0" mnemonicParsing="false" onAction="#confirmarDados" text="Confirmar" />
-      <Label fx:id="labelConfirma" layoutX="123.0" layoutY="303.0" prefHeight="22.0" prefWidth="326.0" textFill="RED" visible="false">
+      <Label fx:id="labelConfirma2" layoutX="123.0" layoutY="303.0" prefHeight="22.0" prefWidth="326.0" textFill="RED" visible="false">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

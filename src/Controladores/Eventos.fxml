@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,123 +14,205 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ControladorEvento">
-    <children>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <children>
-                <Label alignment="CENTER" layoutX="138.0" layoutY="8.0" text="CADASTRO DE EVENTOS">
-                    <font>
-                        <Font name="Arial Black" size="26.0" />
-                    </font>
-                    <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                            <stops>
-                                <Stop>
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                                <Stop offset="0.2732166890982503">
-                                    <color>
-                                        <Color />
-                                    </color>
-                                </Stop>
-                                <Stop offset="0.5351705347470701">
-                                    <color>
-                                        <Color red="0.8299999833106995" green="0.11620000004768372" blue="0.11620000004768372" opacity="0.4099999964237213" />
-                                    </color>
-                                </Stop>
-                                <Stop offset="1.0">
-                                    <color>
-                                        <Color opacity="0.8568084836006165" />
-                                    </color>
-                                </Stop>
-                            </stops>
-                        </LinearGradient>
-                    </textFill>
-                </Label>
-                <Button fx:id="buttonFechar" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="545.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fecharApp" text="SAIR" />
-                <ChoiceBox fx:id="choiceBoxEventos" cache="true" layoutX="170.0" layoutY="51.0" maxWidth="1.7976931348623157E308" onAction="#choiceBoxChange" prefHeight="26.0" prefWidth="291.0" />
-                <Label layoutX="26.0" layoutY="54.0" text="TIPO DE EVENTO:">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="26.0" layoutY="90.0" text="DATA:">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="26.0" layoutY="126.0" text="LONGITUDE:">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label layoutX="26.0" layoutY="166.0" text="LATITUDE:">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="textFieldLong" layoutX="170.0" layoutY="123.0" prefHeight="26.0" prefWidth="291.0" promptText="41.9999" />
-                <TextField fx:id="textFieldLat" layoutX="171.0" layoutY="163.0" prefHeight="26.0" prefWidth="291.0" promptText="23.9999" />
-                <Label fx:id="labelEvento" layoutX="392.0" layoutY="55.0" />
-            <DatePicker fx:id="datePickerData" layoutX="171.0" layoutY="87.0" prefHeight="26.0" prefWidth="154.0" />
-            </children>
-        </AnchorPane>
-        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-            <children>
-                <Label fx:id="labelVelocidade" layoutX="26.0" layoutY="4.0" text="VELOCIDADE:" visible="false">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label fx:id="labelMagnitude" layoutX="27.0" layoutY="4.0" text="MAGNITUDE:" visible="false">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label fx:id="labelSeca" layoutX="27.0" layoutY="4.0" text="SECA:" visible="false">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="textFieldMagnitude" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="9.8" visible="false" />
-                <Label fx:id="labelPrecipitacao" layoutX="27.0" layoutY="39.0" text="PRECIPITAÇÃO:" visible="false">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="textFieldPrecipitacao" layoutX="171.0" layoutY="36.0" prefHeight="26.0" prefWidth="291.0" promptText="150.10" visible="false" />
-                <Button fx:id="buttonConfirmar" layoutX="257.0" layoutY="114.0" mnemonicParsing="false" onAction="#buttonClickAction" prefHeight="28.0" prefWidth="116.0" text="Confirmar" />
-                <Button fx:id="buttonLimpar" layoutX="85.0" layoutY="114.0" mnemonicParsing="false" onAction="#limparDados" prefHeight="28.0" prefWidth="116.0" text="Limpar" />
-                <Button fx:id="buttonMostraDados" layoutX="431.0" layoutY="114.0" mnemonicParsing="false" onAction="#mostrarDados" prefHeight="28.0" prefWidth="116.0" text="MOSTRAR DADOS" />
-                <TextField fx:id="textFieldSeca" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="10" visible="false" />
-                <TextField fx:id="textFieldVelocidade" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="200.5" visible="false" />
-                <Label fx:id="labelCodigo" layoutX="26.0" layoutY="73.0" text="CÓDIGO:">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="textFieldCodigo" layoutX="171.0" layoutY="70.0" prefHeight="26.0" prefWidth="291.0" promptText="23.9999" />
-                <Label fx:id="labelConfirma" alignment="CENTER" layoutX="172.0" layoutY="148.0" prefHeight="46.0" prefWidth="285.0" textFill="#fa0707" visible="false">
-                    <font>
-                        <Font size="14.0" />
-                    </font></Label>
-            <Button fx:id="voltar" layoutX="538.0" layoutY="158.0" mnemonicParsing="false" onAction="#voltarHome" text="Voltar" />
-            </children>
-        </AnchorPane>
-        <AnchorPane prefHeight="264.0" prefWidth="600.0">
-            <children>
-                <TextArea fx:id="textAreaDados" layoutY="28.0" prefHeight="234.0" prefWidth="600.0" visible="false">
-                    <font>
-                        <Font size="14.0" />
-                    </font></TextArea>
-                <Label fx:id="labelCadEvento" layoutX="191.0" text="EVENTOS CADASTRADOS" visible="false">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-    </children>
-</VBox>
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.ControladorEvento">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Label layoutX="51.0" layoutY="14.0" text="CADASTRO" textFill="#ea1414">
+               <font>
+                  <Font name="System Bold Italic" size="23.0" />
+               </font>
+            </Label>
+            <Button fx:id="telaCadEquipamento" onAction="#mostrarEquipamento" layoutX="49.0" layoutY="113.0" mnemonicParsing="false" text="Equipamento" />
+            <Button layoutX="67.0" layoutY="149.0" mnemonicParsing="false" text="Equipe" />
+            <Button layoutX="51.0" layoutY="186.0" mnemonicParsing="false" text="Atendimento" />
+            <Button fx:id="buttonEvento" layoutX="67.0" layoutY="70.0" mnemonicParsing="false" onAction="#mostrarEvento" text="Evento" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="telaEvento" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="608.0" visible="false">
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="138.0" layoutY="8.0" text="CADASTRO DE EVENTOS">
+                           <font>
+                              <Font name="Arial Black" size="26.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.2732166890982503">
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="0.5351705347470701">
+                                       <color>
+                                          <Color red="0.8299999833106995" green="0.11620000004768372" blue="0.11620000004768372" opacity="0.4099999964237213" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color opacity="0.8568084836006165" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Button fx:id="buttonFechar" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="545.0" layoutY="8.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#fecharApp" text="SAIR" />
+                        <ChoiceBox fx:id="choiceBoxEventos" cache="true" layoutX="170.0" layoutY="51.0" maxWidth="1.7976931348623157E308" onAction="#choiceBoxChange" prefHeight="26.0" prefWidth="291.0" />
+                        <Label layoutX="26.0" layoutY="54.0" text="TIPO DE EVENTO:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="90.0" text="DATA:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="126.0" text="LONGITUDE:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="166.0" text="LATITUDE:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldLong" layoutX="170.0" layoutY="123.0" prefHeight="26.0" prefWidth="291.0" promptText="41.9999" />
+                        <TextField fx:id="textFieldLat" layoutX="171.0" layoutY="163.0" prefHeight="26.0" prefWidth="291.0" promptText="23.9999" />
+                        <Label fx:id="labelEvento" layoutX="392.0" layoutY="55.0" />
+                        <DatePicker fx:id="datePickerData" layoutX="171.0" layoutY="87.0" prefHeight="26.0" prefWidth="154.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelVelocidade" layoutX="26.0" layoutY="4.0" text="VELOCIDADE:" visible="false">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelMagnitude" layoutX="27.0" layoutY="4.0" text="MAGNITUDE:" visible="false">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSeca" layoutX="27.0" layoutY="4.0" text="SECA:" visible="false">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldMagnitude" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="9.8" visible="false" />
+                        <Label fx:id="labelPrecipitacao" layoutX="27.0" layoutY="39.0" text="PRECIPITAÇÃO:" visible="false">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldPrecipitacao" layoutX="171.0" layoutY="36.0" prefHeight="26.0" prefWidth="291.0" promptText="150.10" visible="false" />
+                        <Button fx:id="buttonConfirmar" layoutX="257.0" layoutY="114.0" mnemonicParsing="false" onAction="#buttonClickAction" prefHeight="28.0" prefWidth="116.0" text="Confirmar" />
+                        <Button fx:id="buttonLimpar" layoutX="85.0" layoutY="114.0" mnemonicParsing="false" onAction="#limparDados" prefHeight="28.0" prefWidth="116.0" text="Limpar" />
+                        <Button fx:id="buttonMostraDados" layoutX="431.0" layoutY="114.0" mnemonicParsing="false" onAction="#mostrarDados" prefHeight="28.0" prefWidth="116.0" text="MOSTRAR DADOS" />
+                        <TextField fx:id="textFieldSeca" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="10" visible="false" />
+                        <TextField fx:id="textFieldVelocidade" layoutX="171.0" layoutY="1.0" prefHeight="26.0" prefWidth="291.0" promptText="200.5" visible="false" />
+                        <Label fx:id="labelCodigo" layoutX="26.0" layoutY="73.0" text="CÓDIGO:">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldCodigo" layoutX="171.0" layoutY="70.0" prefHeight="26.0" prefWidth="291.0" promptText="23.9999" />
+                        <Label fx:id="labelConfirma" alignment="CENTER" layoutX="172.0" layoutY="148.0" prefHeight="46.0" prefWidth="285.0" textFill="#fa0707" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="voltar" layoutX="538.0" layoutY="158.0" mnemonicParsing="false" onAction="#voltarHome" text="Voltar" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="264.0" prefWidth="600.0">
+                     <children>
+                        <TextArea fx:id="textAreaDados" layoutY="28.0" prefHeight="234.0" prefWidth="600.0" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextArea>
+                        <Label fx:id="labelCadEvento" layoutX="191.0" text="EVENTOS CADASTRADOS" visible="false">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <AnchorPane id="anchorPane" fx:id="telaEquipamento" prefHeight="619.0" prefWidth="608.0">
+               <children>
+                  <Button fx:id="voltar1" layoutX="539.0" layoutY="14.0" mnemonicParsing="false" onAction="#voltarHome" text="voltar" />
+                  <Label layoutX="120.0" layoutY="9.0" text="CADASTRO DE EQUIPAMENTOS">
+                     <font>
+                        <Font name="System Bold Italic" size="23.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldId" layoutX="237.0" layoutY="88.0" promptText="2310" />
+                  <Label layoutX="130.0" layoutY="90.0" text="ID">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldNome" layoutX="237.0" layoutY="127.0" promptText="Ford Ranger" />
+                  <Label layoutX="130.0" layoutY="129.0" text="Nome">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="128.0" layoutY="164.0" text="Custo ao Dia">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldcustoDia" layoutX="237.0" layoutY="162.0" promptText="299.99" />
+                  <ChoiceBox fx:id="choiceBoxEquipamento" layoutX="237.0" layoutY="53.0" prefWidth="150.0" />
+                  <Label layoutX="130.0" layoutY="55.0" text="Equipamento">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldCapInt" layoutX="237.0" layoutY="200.0" promptText="500" visible="false" />
+                  <Label fx:id="labelCapInt" layoutX="128.0" layoutY="202.0" text="Capacidade" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldCapDouble" layoutX="237.0" layoutY="200.0" promptText="500" visible="false" />
+                  <ChoiceBox fx:id="choiceBoxComb" layoutX="237.0" layoutY="200.0" prefWidth="150.0" visible="false" />
+                  <Label fx:id="labelCombustivel" layoutX="125.0" layoutY="202.0" text="Combustível" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelCarga" layoutX="126.0" layoutY="239.0" text="Carga" visible="false">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldCarga" layoutX="237.0" layoutY="237.0" promptText="1500.50" visible="false" />
+                  <Button fx:id="buttonLimparDados" layoutX="125.0" layoutY="263.0" mnemonicParsing="false" onAction="#limparDados" text="Limpar" />
+                  <Button fx:id="buttonConfirmar1" layoutX="231.0" layoutY="263.0" mnemonicParsing="false" onAction="#confirmarDados" text="Confirmar" />
+                  <Label fx:id="labelConfirma1" layoutX="123.0" layoutY="303.0" prefHeight="22.0" prefWidth="326.0" textFill="RED" visible="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+  </items>
+</SplitPane>
